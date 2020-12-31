@@ -1,3 +1,52 @@
-h1 {
-	color: red;
+html {
+	background-image: linear-gradient(
+		to bottom,
+		#064974,
+		#2d648c,
+		#4c81a4,
+		#6a9fbd,
+		#8abdd6,
+		#9acce0,
+		#abdbea,
+		#bdeaf5,
+		#c2ecf3,
+		#c7edf1,
+		#cdefef,
+		#d3f0ee
+	);
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: 'Roboto', sans-serif;
+	min-height: 100%;
+}
+header {
+	color: rgba(255, 255, 255, 0.7);
+	padding: 20px 30px;
+}
+form {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	height: 150px;
+	justify-content: space-around;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+input {
+	background-color: rgba(255, 255, 255, 0.85);
+	border: none;
+	border-radius: 10px;
+	height: 40px;
+	padding: 0 20px;
+	width: 400px;
+}
+button {
+	background-color: rgba(6, 73, 116, 0.63);
+	border: none;
+	border-radius: 10px;
+	color: #fff;
+	height: 40px;
+	width: 200px;
 }
