@@ -16,11 +16,24 @@
     </header>
 
     <main>
-        <span id="errorSpan"></span>
-        <form>
-            <input type="text" name="city" placeholder="Type the city...">
-            <button>Check the weather</button>
-        </form>
+        <section id="checkWeatherSection">
+            <span id="errorSpan"></span>
+            <form>
+                <input type="text" name="city" placeholder="Type the city...">
+                <button>Check the weather</button>
+            </form>
+        </section>
+        <section class="displayWeather">
+            <div id="weatherDesc">
+                <div><img src="#"></div>
+                <div>Test2</div>
+            </div>
+            <div id="weatherParams">
+                <p>Temperature: </p>
+                <p>Clouds: </p>
+                <p>Pressure: </p>
+            </div>
+        </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
