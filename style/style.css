@@ -65,19 +65,32 @@ button {
 	text-align: center;
 	top: 50px;
 }
-.errorVisible {
-	display: block;
-}
-#displayWeather {
+.displayWeather {
 	background-color: pink;
+	display: none;
 	margin: 0 auto;
-	width: 70%;
+	margin-bottom: 50px;
+	width: 60%;
+}
+.visible {
+	display: block;
 }
 #weatherDesc {
 	border: 1px solid red;
 	display: flex;
 	justify-content: space-around;
+	align-items: center;
+}
+#weatherDesc img {
+	border: 1px solid yellow;
+}
+#weatherDesc div:nth-child(2) {
+	border: 1px solid black;
 }
 #weatherParams {
 	border: 1px solid blue;
+}
+#weatherParams p {
+	border: 1px solid green;
+	padding: 10px 10px;
 }
