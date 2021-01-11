@@ -27,44 +27,44 @@ const checkWeather = async (latitude, longitude) => {
 
 	const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=aac7661037c426e7e57a6fa2f82a3767`;
 	try {
-		// display 'displayWeather' section
-
 		// get data
 		const resOpenWeather = await axios.get(weatherURL);
-		console.log(resOpenWeather.data.current.weather[0].icon);
-
-		// icon
-		const iconURL = `http://openweathermap.org/img/wn/${resOpenWeather.data.current.weather[0].icon}@2x.png`;
-		const icon = document.querySelector('#weatherDesc img');
-		icon.src = iconURL;
-
-		// weather desc
-		const weatherDescription = document.querySelector('#weatherDesc div:nth-child(2)');
-		weatherDescription.innerText = resOpenWeather.data.current.weather[0].description;
-
-		// temperature
-		const weatherTemperature = document.querySelector('#weatherParams p:nth-child(1)');
-		weatherTemperature.innerText = `Temperature: ${resOpenWeather.data.current.temp}`;
-
-		// clouds
-		const weatherClouds = document.querySelector('#weatherParams p:nth-child(2)');
-		weatherClouds.innerText = `Clouds: ${resOpenWeather.data.current.clouds}%`;
-
-		// pressure
-		const weatherPressure = document.querySelector('#weatherParams p:nth-child(3)');
-		weatherPressure.innerText = `Pressure: ${resOpenWeather.data.current.pressure} hPa`;
-
+		// display 'displayWeather' section
 		const displayWeatherSection = document.querySelector('.displayWeather');
 		displayWeatherSection.classList.add('visible');
+
 		// scroll to this section
-		window.scrollTo(0, document.body.scrollHeight);
+		displayWeatherSection.scrollIntoView(true);
+
+		setWeather(resOpenWeather);
 	} catch (err) {
 		catchError(err);
 	}
 };
 
 const catchError = (err) => {
-	const errorSpan = document.querySelector('#errorSpan');
+	console.log(err);
+	const errorSpan = document.querySelector('.errorSpan');
 	errorSpan.classList.add('visible');
 	errorSpan.innerText = `Something went wrong: ${err}`;
+};
+
+const getWeatherHtmlElements = () => {
+	return {
+		icon: document.querySelector('#weatherDesc img'),
+		temperature: document.querySelector('#weatherParams p:nth-child(1)'),
+		description: document.querySelector('#weatherDesc div:nth-child(2)'),
+		clouds: document.querySelector('#weatherParams p:nth-child(2)'),
+		pressure: document.querySelector('#weatherParams p:nth-child(3)')
+	};
+};
+
+const setWeather = (response) => {
+	const weather = getWeatherHtmlElements();
+	const iconURL = `http://openweathermap.org/img/wn/${response.data.current.weather[0].icon}@2x.png`;
+	weather.icon.src = iconURL;
+	weather.temperature.innerText = `Pressure: ${response.data.current.pressure} hPa`;
+	weather.description.innerText = response.data.current.weather[0].description;
+	weather.clouds.innerText = `Clouds: ${response.data.current.clouds}%`;
+	weather.pressure.innerText = `Pressure: ${response.data.current.pressure} hPa`;
 };
