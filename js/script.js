@@ -29,14 +29,15 @@ const checkWeather = async (latitude, longitude) => {
 	try {
 		// get data
 		const resOpenWeather = await axios.get(weatherURL);
+
+		setWeather(resOpenWeather);
+
 		// display 'displayWeather' section
 		const displayWeatherSection = document.querySelector('.displayWeather');
 		displayWeatherSection.classList.add('visible');
 
 		// scroll to this section
 		displayWeatherSection.scrollIntoView(true);
-
-		setWeather(resOpenWeather);
 	} catch (err) {
 		catchError(err);
 	}
@@ -63,7 +64,7 @@ const setWeather = (response) => {
 	const weather = getWeatherHtmlElements();
 	const iconURL = `http://openweathermap.org/img/wn/${response.data.current.weather[0].icon}@2x.png`;
 	weather.icon.src = iconURL;
-	weather.temperature.innerText = `Pressure: ${response.data.current.pressure} hPa`;
+	weather.temperature.innerText = `Temperature: ${response.data.current.temp} K`;
 	weather.description.innerText = response.data.current.weather[0].description;
 	weather.clouds.innerText = `Clouds: ${response.data.current.clouds}%`;
 	weather.pressure.innerText = `Pressure: ${response.data.current.pressure} hPa`;
